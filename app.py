@@ -2,16 +2,16 @@ import streamlit as st
 import helper
 import pickle
 
-# Cache the model loading process to save memory and avoid reloading it repeatedly
+# Set page configuration (must be the first Streamlit command)
+st.set_page_config(page_title="Duplicate Question Checker", page_icon="🔍", layout="wide")
+
+# Cache the model loading process to save memory
 @st.cache_resource
 def load_model():
     return pickle.load(open('model.pkl', 'rb'))
 
 # Load the model
 model = load_model()
-
-# Set page title and layout
-st.set_page_config(page_title="Duplicate Question Checker", page_icon="🔍", layout="wide")
 
 # Add custom CSS for better styling
 st.markdown("""
